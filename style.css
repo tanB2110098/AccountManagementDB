@@ -1,0 +1,77 @@
+.thead {
+    width:200px;
+    background-color:green;
+    color:white;
+    font-size:1.2rem;
+    padding:8px 0px;
+    
+}
+
+.thead:first-child {
+    border-top-left-radius:6px;
+}
+
+.thead:last-child {
+    border-top-right-radius:6px;
+}
+
+.add-wrap {
+    width: 387px;
+}
+.input {
+    width:300px;
+    margin-top:10px;
+    max-width:100%;
+    padding:8px 8px;
+    border-radius: 4px;
+    border:1px solid #ccc;
+}
+
+#add {
+    float: right;
+    margin-top:16px;
+    background-color:black;
+    padding:8px 12px;
+    border-radius:16px;
+    color:white;
+    font-weight: bold;
+}
+
+.account-wrap {
+    display: flex;
+    flex-direction: column;
+    margin:8px 0px;
+}
+.account-management {
+    margin-top:60px;
+}
+
+.account-list {
+}
+.account-item_info{
+    min-width:150px;
+    text-align: center;
+    padding:8px 0px;
+    
+}
+
+.account-item_info:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+#remove,
+#reset {
+    background-color:blue;
+    padding:12px 12px;
+    color:white;
+    font-weight:bold;
+    border: none;
+    border-radius: 8px;
+    margin:8px 0px;
+}
+
+#remove {
+    background-color:red;
+}
+
