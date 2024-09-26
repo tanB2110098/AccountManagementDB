@@ -128,6 +128,7 @@ function getAccountInput() {
         alert("Please enter info!!");
         return;
     }
+    let date = Date.now();
     let account = new Account(id,email, tiktok, date);
 
     return account;
