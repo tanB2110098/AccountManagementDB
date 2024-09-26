@@ -13,6 +13,14 @@ class AccountManagement {
     }
 
     addAccount(account) {
+        // check existing account
+        for (let i = 0; i < this.accounts.length; i++) {
+            if (this.accounts[i].email == account.email || this.accounts[i].tiktokAccount == account.tiktokAccount){
+                alert("Account is already existing!");
+                return;
+            }
+        }
+
         this.accounts.push(account);
         this.displayAccount();
         alert("Add account successfully!!");
