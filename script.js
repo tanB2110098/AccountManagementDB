@@ -30,6 +30,10 @@ class AccountManagement {
         console.log(accounts);
     }
     displayAccount() {
+        // sort before display
+        this.sortByActive();
+        console.log(this.accounts);
+
         let accountBody = document.querySelector("#account-body");
         let html = '';
         for (let i = 0; i < this.accounts.length; i++) {
@@ -76,6 +80,23 @@ class AccountManagement {
                 break;
             }
         }
+    }
+
+    sortByActive() {
+        let t;
+        for (let i = 0; i < this.accounts.length - 1; i++) {
+            for(let j = i + 1; j < this.accounts.length; j++) {
+                let thisAccountDate = this.accounts[i].date;
+                let thatAccountDate = this.accounts[j].date;
+                if (thisAccountDate > thatAccountDate) {
+                    t = this.accounts[i];
+                    this.accounts[i] = this.accounts[j];
+                    this.accounts[j] = t;
+                }
+            }
+        }
+        return this.accounts;
+
     }
 }
 
@@ -167,7 +188,3 @@ function start() {
 }
 
 start();
-
-let arr = ['apple', 'banana', 'cherry', 'date'];
-arr.splice(1, 1); // Remove 1 item at index 1 (i.e., 'banana')
-console.log(arr);
