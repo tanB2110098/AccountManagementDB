@@ -22,11 +22,15 @@
                     <input type="text" placeholder="Tài khoản" class="input" id="tiktok-input">
                 </div>
             </div>
-            <button id="add" onclick="addAccount()">Add Account</button>
+            <button id="add">Add Account</button>
         </div>
 
         <div class="account-management">
             <h3>Accounts</h3>
+            <div id="account-management-account-info">
+                <label for="">Total account: </label>
+                <span id="number-of-account"></span>
+            </div>
             <table class="account-list">
                 <thead>
                     <th class="thead">
@@ -48,9 +52,7 @@
             </table>
         </div>
     </div>
-    <script src="./script.js">
-        
-
+    <script type="module" src="./script.js">
     </script>
 </body>
 </html>

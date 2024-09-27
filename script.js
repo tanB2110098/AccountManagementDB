@@ -1,3 +1,33 @@
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD1qmjKUiJJTrIrzFHBUl1IkVNHoNxpARI",
+    authDomain: "accountmanagement-138b7.firebaseapp.com",
+    databaseURL: "https://accountmanagement-138b7-default-rtdb.firebaseio.com", // E
+    projectId: "accountmanagement-138b7",
+    storageBucket: "accountmanagement-138b7.appspot.com",
+    messagingSenderId: "340211540580",
+    appId: "1:340211540580:web:234fac6df89143c8163571",
+    measurementId: "G-DP3RP0P1DG"
+  }
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  import {getDatabase, ref, set, update, remove, get, child, onValue}
+  from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+  // method to 
+
+  let db = getDatabase();
+//--------------------------------END CONNECT DT-------------------------
+
+
 class Account {
     constructor(id,email,tiktokAccount, date) {
         this.id = id;
@@ -6,6 +36,8 @@ class Account {
         this.date = date;
     }
 }
+
+
 
 class AccountManagement {
     constructor(accounts) {
@@ -43,12 +75,28 @@ class AccountManagement {
                         <td class="account-item_info">${this.accounts[i].tiktokAccount}</td>  
                         <td class="account-item_info">${days} days</td>  
                         <td class="account-item_info" >
-                            <button id="remove" onclick="removeAccount(${this.accounts[i].id})">remove</button>
-                            <button id="reset" onclick="resetAccount(${this.accounts[i].id})">Reset</button>
+                            <button class="remove" data-id="${this.accounts[i].id}">remove</button>
+                            <button class="reset" data-id="${this.accounts[i].id}")" onclick="reset()">Reset</button>
                         </td>  
                     </tr>`
         }
         accountBody.innerHTML = html;
+
+         // Attach event listeners for remove buttons
+        document.querySelectorAll(".remove").forEach(button => {
+        button.addEventListener("click", (event) => {
+            let itemId = event.target.getAttribute("data-id");
+            console.log(itemId);
+            removeAccount(itemId);
+        });
+
+        document.querySelectorAll(".reset").forEach(button => {
+            button.addEventListener("click", (event) => {
+                let itemId = event.target.getAttribute("data-id");
+                updateAccount(itemId);
+            });
+        })
+});
     }
 
     saveAccount() {
@@ -71,16 +119,6 @@ class AccountManagement {
         }
     }
 
-    reset(id) {
-        for (let i = 0; i < this.accounts.length; i++) {
-            if (this.accounts[i].id == id) {
-                this.accounts[i].date = Date.now();
-                this.displayAccount();
-                saveAccounts(this.accounts);
-                break;
-            }
-        }
-    }
 
     sortByActive() {
         let t;
@@ -98,7 +136,92 @@ class AccountManagement {
         return this.accounts;
 
     }
+
+    existsByTiktokAccountOrEmail(account) {
+        for (let i = 0; i < this.accounts.length;i++) {
+            let accountInDB = this.accounts[i];
+            if (account.tiktokAccount == accountInDB.tiktokAccount 
+                || account.email == accountInDB.email) return true;
+        }
+        return false;
+    }
 }
+
+
+
+// async function addAccount() {
+ 
+//     let accounts = await getAllAccount();
+
+//     let accountManagement = new AccountManagement(accounts);
+        
+//     let account = getAccountInput();
+//     accountManagement.addAccount(account);
+    
+//     accountManagement.saveAccount();
+// }
+
+document.querySelector("#add").onclick = async function addAccount(account) {
+    let accounts = await getAllAccounts("accounts");
+
+    let accountManagement = new AccountManagement(accounts);
+    let accountSaving = getAccountInput();
+
+
+    if (accountManagement.existsByTiktokAccountOrEmail(accountSaving)) {
+        alert("Account is existing!!");
+        return;
+    }
+
+    set(ref(db, 'accounts/' + accountSaving.id), accountSaving)
+    .then(() => {
+        accountManagement.addAccount(accountSaving);
+        accountManagement.displayAccount();
+    })
+    .catch((e) => {
+        alert("create fail! " + e)
+    });
+}
+
+
+// let account = new Account(1000, "tankim123", "tankim123",123432432424);
+// addAccount(account);
+
+
+// get user by id 
+const dbRef = ref(getDatabase());
+async function getAccountById(id) {
+    try {
+        let snapshot = await get(child(dbRef, `accounts/${id}`));
+        let data = snapshot.val();
+        return data;
+    } catch(e) {
+        alert("Account does not exist!!");
+    }
+}
+
+
+console.log(getAccountById(1727457077692));
+// get all user
+
+async function getAllAccounts(path) {
+    const dbRef = ref(db);
+    try {
+      const snapshot = await get(child(dbRef, path));
+      if (snapshot.exists()) {
+        let data = snapshot.val();
+        const accountsArray = Object.values(data); // Convert object to an array of accounts
+        return accountsArray;
+      } else {
+        console.log("No data available");
+        return [];
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
+
 
 
 function calculateDateDifference(date1, date2) {
@@ -116,28 +239,6 @@ function calculateDateDifference(date1, date2) {
 }
 
 
-function getAccounts() {
-    let accounts = localStorage.getItem("accounts");
-    if (accounts == null) {
-        accounts = [];
-    } else {
-        accounts = JSON.parse(accounts);
-    }
-    return accounts;
-
-}
-
-function addAccount() {
- 
-    let accounts = getAccounts()
-
-    let accountManagement = new AccountManagement(accounts);
-        
-    let account = getAccountInput();
-    accountManagement.addAccount(account);
-    
-    accountManagement.saveAccount();
-}
 
 function getAccountInput() {
     
@@ -155,36 +256,50 @@ function getAccountInput() {
     return account;
 }
 
-function removeAccount(id) {
-    let accounts = getAccounts();
 
-    let accountManagement = new AccountManagement(accounts);
-
-    accountManagement.remove(id);
-}
-
-function resetAccount(id) {
-    let accounts = getAccounts();
-
-    let accountManagement = new AccountManagement(accounts);
-
-    accountManagement.reset(id);
-    accountManagement.displayAccount();
-    alert("Reset successfully")
-}
-
-function saveAccounts(accounts) {
-    if (accounts.length != 0) {
-        accounts = JSON.stringify(accounts);
-        localStorage.setItem("accounts", accounts);
-    }
-}
-
-function start() {
-    let accounts = getAccounts();
-
+async function resetUI() {
+    let accounts = await getAllAccounts("accounts");
     let accountManagement = new AccountManagement(accounts);
     accountManagement.displayAccount();
+}
+
+function removeAccount(itemId) {
+    remove(ref(db, "accounts" + '/' + itemId))
+     .then(() => {
+       alert(`Data with ID ${itemId} successfully deleted!`);
+       resetUI();
+     })
+     .catch((error) => {
+       alert("Error deleting data: ", error);
+     });
+ }
+
+ async function updateAccount(itemId) {
+
+    let account = await getAccountById(itemId);
+
+    account.date = Date.now();
+
+    update(ref(db, "accounts" + '/' + itemId), account)
+     .then(() => {
+       alert(`Data with ID ${itemId} successfully updated!`);
+       resetUI();
+     })
+     .catch((error) => {
+       alert("Error updating data: ", error);
+     });
+ }
+
+
+
+async function start() {
+    let accounts = await getAllAccounts("accounts");
+
+    let accountManagement = new AccountManagement(accounts);
+    accountManagement.displayAccount();
+
+    // show acccounts number
+    document.querySelector("#number-of-account").textContent = accounts.length;
 }
 
 start();
