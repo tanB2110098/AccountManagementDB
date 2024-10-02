@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -21,8 +22,19 @@
                     <label class="body-account-mn-label">Tiktok account</label>
                     <input type="text" placeholder="Tài khoản" class="input" id="tiktok-input">
                 </div>
+
+                <div id="devices">
+                    <label for="" style="margin-bottom:4px">Device</label>
+                    <select id="device-select">
+                        <option value="1">Option 1</option>
+                        
+                    </select>
+                </div>
             </div>
-            <button id="add">Add Account</button>
+            <div id="btn-controller">
+                <button id="add-device" class="m-4">Add Device</button>
+                <button id="add" class="m-4">Add Account</button>
+            </div>
         </div>
 
         <div class="account-management">
@@ -43,6 +55,9 @@
                         Day
                     </th>
                     <th class="thead">
+                        Device
+                    </th>
+                    <th class="thead">
                         Controller
                     </th>
                 </thead>
@@ -52,7 +67,33 @@
             </table>
         </div>
     </div>
-    <script type="module" src="./script.js">
-    </script>
+
+    <div id="device-management">
+        <h3 id="device-management_title">Device Management</h3>
+        <div class="" id="device-mg-controller">
+            <span id="show-device-btn" class="btn">Show Devices</span>
+            <span id="hide-device-btn" class="btn">Hide Devices</span>
+        </div>
+        <div id="device-management-body">
+            <table id="device-management-body-table">
+                <thead>
+                    <th class="table-device_header">Device name</th>
+                    <th class="table-device_header">Delete</th>
+                </thead>
+                <tbody id="table-device-list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="device-add-form">
+        <div id="overlay"></div>
+        <div id="device-add-form-body">
+            <span id="close-add-device-form">X</span>
+            <h2 id="device-add-form-body_title">Add new device</h2>
+            <input id="device-add-form-body_name" type="text" placeholder="Device name">
+            <button  id="device-add-form-body_button">Add Device</button>
+        </div>
+    </div>
+    <script type="module" src="./script.js"></script>
 </body>
 </html>
