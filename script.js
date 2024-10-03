@@ -192,7 +192,7 @@ class AccountManagement {
                         
                         <td class="account-item_info" >
                             <button class="remove" data-id="${this.accounts[i].id}">remove</button>
-                            <button class="reset" data-id="${this.accounts[i].id}")" onclick="reset()">Reset</button>
+                            <button class="reset" data-id="${this.accounts[i].id}")">Reset</button>
                         </td>  
                     </tr>`;
             
@@ -236,16 +236,16 @@ class AccountManagement {
 
                     }
                 }
-
             }
         });
 
          // Attach event listeners for remove buttons
         document.querySelectorAll(".remove").forEach(button => {
-        button.addEventListener("click", (event) => {
-            let itemId = event.target.getAttribute("data-id");
-            console.log(itemId);
-            removeAccount(itemId);
+            button.addEventListener("click", (event) => {
+                let itemId = event.target.getAttribute("data-id");
+                console.log(itemId);
+                removeAccount(itemId);
+            });
         });
 
         document.querySelectorAll(".reset").forEach(button => {
@@ -254,7 +254,7 @@ class AccountManagement {
                 updateAccount(itemId);
             });
         })
-});
+
     }
 
     saveAccount() {
