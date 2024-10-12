@@ -611,7 +611,7 @@ document.querySelector("#get-code").onclick = async function getCode() {
 
         for (let i = start; i <= end; i++) {
 
-            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 892.5 \nadb shell sleep 10 \nadb shell input tap 209.8 810.5 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 15 `;
+            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 892.5 \nadb shell sleep 20 \nadb shell input tap 209.8 810.5 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 15 `;
 
             
         }
