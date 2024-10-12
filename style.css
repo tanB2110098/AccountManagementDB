@@ -13,6 +13,18 @@
 #account-management-account-info {
     margin:8px 0; 
 }
+
+#start, #end {
+    padding:6px 8px;
+    border:1px solid #ccc;
+    border-radius: 6px;
+}
+
+#end {
+
+
+}
+
 .thead {
     width:200px;
     background-color:green;
@@ -47,6 +59,7 @@
     flex-direction: row;
     align-items: center;
 }
+#get-code,
 #add-device,
 #add {
     background-color:black;

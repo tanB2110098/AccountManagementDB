@@ -34,6 +34,7 @@
             <div id="btn-controller">
                 <button id="add-device" class="m-4">Add Device</button>
                 <button id="add" class="m-4">Add Account</button>
+                
             </div>
         </div>
 
@@ -42,9 +43,17 @@
             <div id="account-management-account-info">
                 <label for="">Total account: </label>
                 <span id="number-of-account"></span>
+                <div id="account-management-account-info-get-code">
+                    <input type="number" id="start" placeholder="start">
+                    <input type="number" id="end" placeholder="end">
+                    <button id="get-code" onclick="getCode()">Get Code</button>
+                </div>
             </div>
             <table class="account-list">
                 <thead>
+                    <th class="thead">
+                        STT
+                    </th>
                     <th class="thead">
                         Email
                     </th>
@@ -94,7 +103,6 @@
             <button  id="device-add-form-body_button">Add Device</button>
         </div>
     </div>
-    
     <script type="module" src="./script.js"></script>
 </body>
 </html>

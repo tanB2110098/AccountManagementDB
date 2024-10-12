@@ -181,6 +181,7 @@ class AccountManagement {
             let days = calculateDateDifference(new Date(), new Date(this.accounts[i].date));
 
             html += `<tr class="account-item">
+                        <td class="account-item_info">${i}</td>
                         <td class="account-item_info">${this.accounts[i].email}</td>
                         <td class="account-item_info">${this.accounts[i].tiktokAccount}</td>  
                         <td class="account-item_info">${days} days</td> 
@@ -587,3 +588,43 @@ document.querySelector("#hide-device-btn").onclick = async function showAlllDevi
 
 
 start();
+
+let accountAdding = {
+    id: 1727478837323,
+    email: '0328869981',
+    tiktokAccount: 'No mail',
+    date: 1727478837325
+};
+
+document.querySelector("#get-code").onclick = async function getCode() {
+
+        let accounts = await getAllAccounts("accounts");
+        
+        let accountManagement = new AccountManagement(accounts);
+
+        let start = document.querySelector("#start").value;
+        let end = document.querySelector("#end").value;
+
+        accountManagement.sortByActive();
+        
+        let code = '';
+
+        for (let i = start; i < end; i++) {
+
+            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 892.5 \nadb shell sleep 10 \nadb shell input tap 209.8 810.5 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 8 `;
+
+            
+        }
+
+    
+        // Use the Clipboard API to copy the text
+        navigator.clipboard.writeText(code)
+            .then(() => {
+                alert("Text copied to clipboard successfully!");
+                document.querySelector("#start").value = 0;
+                document.querySelector("#end").value = 0;
+            })
+            .catch(err => {
+                console.error("Failed to copy text: ", err);
+            });
+}
