@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style-for-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
+    <nav id="nav">
+        <ul id="nav-list">
+            <li class="nav-item active">
+                <a  class="nav-item_link" href="./index.html">Account Management</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./code-generate.html">Code Generate</a>
+            </li>
+        </ul>
+    </nav>
     <div id="body">
         <div class="add-wrap">
             <h1>Account management</h1>
@@ -50,6 +61,9 @@
                 </div>
             </div>
             <table class="account-list">
+                <input type="hidden" id="remove-account-id" value="">
+                <input type="hidden" id="reset-account-id" value="">
+
                 <thead>
                     <th class="thead">
                         STT
@@ -101,6 +115,26 @@
             <h2 id="device-add-form-body_title">Add new device</h2>
             <input id="device-add-form-body_name" type="text" placeholder="Device name">
             <button  id="device-add-form-body_button">Add Device</button>
+        </div>
+    </div>
+
+    <div id="form-confirmation">
+        <div id="form-confirmation-overlay">
+
+        </div>
+
+        <div id="form-confirmation-deleting">
+            <img src="./close.png" alt="" class="close">
+            <h3 id="form-confirmation-body_header">Xác Nhận</h3>
+            <span id="form-confirmation-body_description">Bạn có chắc chắn xóa không?</span>
+            <button id="deleting-confirmation">Xác nhận</button>
+        </div>
+
+        <div id="form-confirmation-reseting">
+            <img src="./close.png" alt="" class="close">
+            <h3 id="form-confirmation-reseting_header">Xác Nhận</h3>
+            <span id="form-confirmation-reseting_description">Bạn có chắc chắn reset?</span>
+            <button id="reseting-confirmation">Xác nhận</button>
         </div>
     </div>
     <script type="module" src="./script.js"></script>

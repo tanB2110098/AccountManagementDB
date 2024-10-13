@@ -243,20 +243,44 @@ class AccountManagement {
          // Attach event listeners for remove buttons
         document.querySelectorAll(".remove").forEach(button => {
             button.addEventListener("click", (event) => {
-                let itemId = event.target.getAttribute("data-id");
-                console.log(itemId);
-                removeAccount(itemId);
+                // let itemId = event.target.getAttribute("data-id");
+                // console.log(itemId);
+                // removeAccount(itemId);
+                
+                //set hiding input id value
+                let accountId = event.currentTarget.getAttribute("data-id");
+                document.querySelector("#remove-account-id").value = accountId;
+
+                // show form confirmation
+                document.querySelector("#form-confirmation").style = "visibility: visible;";
+
+                document.querySelector("#form-confirmation-deleting").style = "display:block";
+                
             });
         });
 
         document.querySelectorAll(".reset").forEach(button => {
             button.addEventListener("click", (event) => {
-                let itemId = event.target.getAttribute("data-id");
-                updateAccount(itemId);
+                // let itemId = event.target.getAttribute("data-id");
+                // updateAccount(itemId);
+
+                 // show reseting confirmation form 
+                let accountId = event.currentTarget.getAttribute("data-id");
+                document.querySelector("#reset-account-id").value = accountId;
+
+                 // show form confirmation
+                 document.querySelector("#form-confirmation").style = "visibility: visible;";
+
+                 document.querySelector("#form-confirmation-reseting").style = "display:block";
+
             });
+
+           
         })
 
     }
+
+
 
     saveAccount() {
         this.accounts = JSON.stringify(this.accounts);
@@ -305,6 +329,7 @@ class AccountManagement {
         return false;
     }
 }
+
 
 
 
@@ -437,6 +462,7 @@ function removeAccount(itemId) {
      .then(() => {
        alert(`Data with ID ${itemId} successfully deleted!`);
        resetUI();
+       closeConfirmationForm();
      })
      .catch((error) => {
        alert("Error deleting data: ", error);
@@ -453,6 +479,7 @@ function removeAccount(itemId) {
      .then(() => {
        alert(`Data with ID ${itemId} successfully updated!`);
        resetUI();
+       closeConfirmationForm();
      })
      .catch((error) => {
        alert("Error updating data: ", error);
@@ -608,12 +635,10 @@ document.querySelector("#get-code").onclick = async function getCode() {
         accountManagement.sortByActive();
         
         let code = '';
+        let tiktokLogin = "";
 
         for (let i = start; i <= end; i++) {
-
-            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 892.5 \nadb shell sleep 20 \nadb shell input tap 209.8 810.5 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 15 `;
-
-            
+            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 712.5 \nadb shell sleep 15  \nadb shell input tap 209.8 810.5 \nadb shell sleep 2 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 10 `;
         }
 
     
@@ -627,4 +652,46 @@ document.querySelector("#get-code").onclick = async function getCode() {
             .catch(err => {
                 console.error("Failed to copy text: ", err);
             });
+}
+
+
+// close confirmation form
+let closeBtns = document.querySelectorAll(".close");
+
+for (let closeBtnItem of closeBtns) {
+    closeBtnItem.onclick = function() {
+        closeConfirmationForm();
+    }
+}
+
+function closeConfirmationForm() {
+     // reset resetAccountId
+     document.querySelector("#remove-account-id").value = -1;
+        
+     // reset deletingAccountId
+     document.querySelector("#reset-account-id").value = -1;
+
+     // hidding container 2 form
+     document.querySelector("#form-confirmation").style = "visibility: hidden;";
+
+     // hidding 2 form 
+     document.querySelector("#form-confirmation-reseting").style = "display:none;"
+     document.querySelector("#form-confirmation-deleting ").style = "display:none;"
+
+}
+
+
+// delete account
+document.querySelector("#deleting-confirmation").onclick = function() {
+     // account id 
+     let accountId = document.querySelector("#remove-account-id").value;
+    removeAccount(accountId);
+    
+}
+
+// reset account
+document.querySelector("#reseting-confirmation").onclick = function() {
+    
+    let accountId = document.querySelector("#reset-account-id").value;
+    updateAccount(accountId);
 }

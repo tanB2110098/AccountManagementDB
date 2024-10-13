@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style-for-nav.css">
+    <link rel="stylesheet" href="./style-for-generate-code.css">
+    <title>Code Generate</title>
+</head>
+<body>
+    <nav id="nav">
+        <ul id="nav-list">
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./index.html">Account Management</a>
+            </li>
+            <li class="nav-item active">
+                <a  class="nav-item_link" href="./code-generate.html">Code Generate</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="logout-google-account" class="code-part">
+        <h2 id="logout-google-account_title">Tạo mã logout Google</h2>
+        <div id="logout-google-account-body">
+            <div id="logout-google-account-body-input">
+                <input type="number" id="quantity-account-logout" class="input" placeholder="Quantity account logout">
+            </div>
+
+            <button id="generate-code" class="btn">Generate code<button>
+        </div>
+        
+    </div>
+
+    <div id="logout-google-account" class="code-part">
+        <h2 id="logout-google-account_title">Tạo mã login tiktok (Beta)</h2>
+        <div id="logout-google-account-body">
+            <div id="logout-google-account-body-input">
+                <input type="number" id="quantity-tiktok-account" class="input" placeholder="Quantity of tiktok account">
+            </div>
+
+            <button id="generate-tiktok-login-code" class="btn">Generate code<button>
+        </div>
+        
+    </div>
+
+    <script src="./generate-code.js">
+
+    </script>
+    
+</body>
+</html>

@@ -7,6 +7,10 @@
 .m-4 {
     margin:4px;
 }
+
+
+/*end style for nav*/
+
 #body {
     padding:5px 10px;
 }
@@ -278,5 +282,80 @@
     border-radius: 16px;
     color:red;
 }
+
+/*style for confirmation*/
+#form-confirmation {
+    position:fixed;
+    top:0;
+    right: 0;
+    bottom:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#form-confirmation-overlay {
+    position:absolute;
+    top:0;
+    right: 0;
+    bottom:0;
+    left: 0;
+    background-color:rgb(0, 0, 0, 0.2);
+    z-index:1;
+}
+
+#form-confirmation-reseting,
+#form-confirmation-deleting {
+    background-color:white;
+    z-index:10;
+    padding:10px 20px;
+    position: relative;
+    display: none;
+
+}
+
+
+.close {
+    width:25px;
+    position: absolute;
+    top:5;
+    right:10px;
+    cursor: pointer;
+}
+
+#form-confirmation-reseting_header,
+#form-confirmation-body_header {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#form-confirmation-reseting_description,
+#form-confirmation-body_description {
+    display: block;
+    margin:10px 0px;
+}
+
+#reseting-confirmation,
+#deleting-confirmation {
+    width:100%;
+    background-color:rgb(101, 226, 101);
+    border:none;
+    padding:6px 8px;
+    margin-top: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    #account-management-account-info-get-code {
+      display: none;
+    }
+  }
+
+
+
 
 

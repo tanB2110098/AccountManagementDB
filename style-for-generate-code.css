@@ -1,0 +1,47 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body {
+    padding:0px 4px;
+}
+
+.code-part {
+    margin-bottom:32px;
+}
+
+#logout-google-account {
+
+}
+#logout-google-account_title {
+    margin:8px 0px;
+}
+
+#logout-google-account-body {
+}
+
+#logout-google-account-body-input {
+    margin:16px 0px;
+}
+
+.title {
+    font-size: 1.1rem;
+    margin-right:4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input {
+    padding:6px 8px;
+    border:1px solid #cfcdcd;
+    border-radius: 3px;
+}
+
+.btn {
+    padding:6px 8px;
+    background-color:rgb(88, 233, 88);
+    border:none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
