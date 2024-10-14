@@ -460,7 +460,6 @@ async function resetUI() {
 function removeAccount(itemId) {
     remove(ref(db, "accounts" + '/' + itemId))
      .then(() => {
-       alert(`Data with ID ${itemId} successfully deleted!`);
        resetUI();
        closeConfirmationForm();
      })
@@ -477,7 +476,6 @@ function removeAccount(itemId) {
 
     update(ref(db, "accounts" + '/' + itemId), account)
      .then(() => {
-       alert(`Data with ID ${itemId} successfully updated!`);
        resetUI();
        closeConfirmationForm();
      })
@@ -638,7 +636,7 @@ document.querySelector("#get-code").onclick = async function getCode() {
         let tiktokLogin = "";
 
         for (let i = start; i <= end; i++) {
-            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell sleep 20 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell input tap 330.7 712.5 \nadb shell sleep 15  \nadb shell input tap 209.8 810.5 \nadb shell sleep 2 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 10 `;
+            code += `adb shell monkey -p com.android.settings -c android.intent.category.LAUNCHER 1 \nadb shell sleep 20 \nadb shell am start -a android.settings.ADD_ACCOUNT_SETTINGS \nadb shell sleep 20 \nadb shell input tap 330.7 712.5 \nadb shell sleep 30  \nadb shell input tap 209.8 810.5 \nadb shell sleep 2 \nadb shell input text "${accounts[i].email}" \nadb shell sleep 2 \nadb shell input tap 848.2 1888 \nadb shell sleep 4 \nadb shell input text "tan335068556#NT"  \nadb shell sleep 2 \nadb shell input tap 830 2082 \nadb shell input tap 836 1878 \nadb shell sleep 2 \nadb shell input tap 813 1928 \nadb shell sleep 10 `;
         }
 
     
