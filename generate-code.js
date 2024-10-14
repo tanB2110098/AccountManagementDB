@@ -22,7 +22,7 @@ document.getElementById("generate-code").onclick = function() {
 
 // generate code for loging tiktok 
 document.querySelector("#generate-tiktok-login-code").onclick = function() {
-    let code = 'adb shell input tap 878.2 1908 \nadb shell sleep 6 \nadb shell input tap 930 1926 \nadb shell sleep 5 \nadb shell input tap 484.6 1207.4 \nadb shell sleep 5 \nadb shell input tap 366.7 934.5 \nadb shell sleep 8 \nadb shell input tap 501.5 934.5 \nadb shell sleep 4 \nadb shell input tap 513.5 1249.4 \nadb shell sleep 4 \n';
+    let code = 'adb shell input tap 878.2 1908 \nadb shell sleep 6 \nadb shell input tap 930 1926 \nadb shell sleep 5 \nadb shell input tap 484.6 1207.4 \nadb shell sleep 5 \nadb shell input tap 366.7 934.5 \nadb shell sleep 20 \nadb shell input tap 501.5 934.5 \nadb shell sleep 15 \nadb shell input tap 513.5 1249.4 \nadb shell sleep 4 \n';
     let firstAccountCoordinate = 934.5;
     // quantity of account
     let quantityOfTiktokAccountInput = document.querySelector("#quantity-tiktok-account");
