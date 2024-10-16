@@ -630,7 +630,7 @@ document.querySelector("#get-code").onclick = async function getCode() {
         let start = document.querySelector("#start").value;
         let end = document.querySelector("#end").value;
 
-        if (start == "") start = end;
+        if (start == "0" || start == "") start = end;
         start = parseInt(start);
         end = parseInt(end);
         accountManagement.sortByActive();
