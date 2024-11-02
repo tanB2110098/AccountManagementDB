@@ -696,3 +696,10 @@ document.querySelector("#reseting-confirmation").onclick = function() {
     let accountId = document.querySelector("#reset-account-id").value;
     updateAccount(accountId);
 }
+
+document.querySelector("#move-to-top").onclick = function moveToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This makes the scrolling smooth
+      });
+}
