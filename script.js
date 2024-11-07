@@ -109,9 +109,11 @@ class DeviceManagement {
     }
 
     removeDevice(id) {
+
         remove(ref(db, "devices" + '/' + id))
         .then(() => {
             alert(`Data with ID ${id} successfully deleted!`);
+
         })
         .catch((error) => {
              alert("Error deleting data: ", error);
@@ -161,7 +163,7 @@ class AccountManagement {
         
         // sort before display
         this.sortByActive();
-        console.log(this.accounts);
+        // console.log(this.accounts);
 
         let accountBody = document.querySelector("#account-body");
         let html = '';
@@ -223,7 +225,7 @@ class AccountManagement {
                     if (accountItem.id == deviceId) {
                         // check device is device diffent with current account's device
                         if (accountItem.deviceName == optionDeviceValue) {
-                            console.log("Không có gì thay đổi");
+                            // console.log("Không có gì thay đổi");
                         } else {
                             // change account device 
                             accountItem.deviceName = optionDeviceValue;
@@ -389,7 +391,7 @@ async function getAccountById(id) {
 }
 
 
-console.log(getAccountById(1727457077692));
+// console.log(getAccountById(1727457077692));
 // get all user
 
 async function getAllAccounts(path) {
@@ -444,7 +446,7 @@ function getAccountInput() {
     // get device name
     let deviceName = document.querySelector("#device-select").value;
 
-    console.log(deviceName);
+    // console.log(deviceName);
     let account = new Account(id,email, tiktok, date, deviceName);
 
     return account;
@@ -457,7 +459,33 @@ async function resetUI() {
     accountManagement.displayAccount();
 }
 
-function removeAccount(itemId) {
+async function removeAccount(itemId) {
+
+    // save account to localStorage
+   let accounts = await getAllAccounts("accounts");
+   
+//    console.log(accounts);
+//    return;
+   for (let i = 0; i < accounts.length; i++) {
+        if (accounts[i].id == itemId) {
+            
+            // check existing accounts deleting 
+            let accountsDeleting = localStorage.getItem("accountsDeleting");
+            if (accountsDeleting == null) {
+                accountsDeleting = [];
+            } else {
+                accountsDeleting = JSON.parse(accountsDeleting)
+            }
+            
+            accountsDeleting.push(accounts[i]);
+
+
+            localStorage.setItem("accountsDeleting", JSON.stringify(accountsDeleting));
+
+        }
+   }
+
+
     remove(ref(db, "accounts" + '/' + itemId))
      .then(() => {
        resetUI();
@@ -493,7 +521,7 @@ function removeAccount(itemId) {
      })
      .catch((error) => {
        alert("Error updating data: ", error);
-       console.log(error.message);
+    //    console.log(error.message);
      });
  }
 
@@ -509,11 +537,11 @@ function removeAccount(itemId) {
         const accountsArray = Object.values(data); // Convert object to an array of accounts
         return accountsArray;
       } else {
-        console.log("No data available");
+        // console.log("No data available");
         return [];
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+    //   console.error("Error fetching data:", error);
       throw error;
     }
   }

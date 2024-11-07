@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style-for-nav.css">
+    <title>History</title>
+</head>
+<body>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        .account-list {
+            margin:0 auto;
+        }
+        .thead {
+            width:200px;
+            background-color:green;
+            color:white;
+            font-size:1.2rem;
+            padding:8px 0px;
+            
+        }
+
+        .thead:first-child {
+            border-top-left-radius:6px;
+        }
+
+        .thead:last-child {
+            border-top-right-radius:6px;
+        }
+
+        #btn-controller {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .remove,
+        .restore {
+            background-color:rgb(17, 17, 17);
+            padding:12px 12px;
+            color:white;
+            font-weight:bold;
+            border: none;
+            border-radius: 8px;
+            margin:8px 0px;
+        }
+
+        .remove {
+            background-color:red;
+        }
+
+        .account-item_info {
+            text-align: center;
+        }
+
+    </style>
+
+    <nav id="nav">
+        <ul id="nav-list">
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./index.html">Account Management</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./code-generate.html">Code Generate</a>
+            </li>
+            <li class="nav-item active">
+                <a  class="nav-item_link " href="./history.html">History</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 style="text-align: center;margin:32px 0px;">History</h1>
+    
+    <div id="history-body">
+        <table class="account-list">
+            <input type="hidden" id="remove-account-id" value="">
+            <input type="hidden" id="reset-account-id" value="">
+
+            <thead>
+                <th class="thead">
+                    STT
+                </th>
+                <th class="thead">
+                    Email
+                </th>
+                <th class="thead">
+                    Tiktok
+                </th>
+                <th class="thead">
+                    Day
+                </th>
+                <th class="thead">
+                    Controller
+                </th>
+            </thead>
+            <tbody id="account-body">
+             
+            </tbody>
+        </table>
+    </div>
+    <script src="./history.js" type="module"></script>
+</body>
+</html>
