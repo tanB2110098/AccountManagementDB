@@ -1,0 +1,28 @@
+#body {
+    width:400px;
+    max-width: 100%;
+}
+#tds-input {
+    display: flex;
+    flex-direction: column;
+
+}
+#save-tds-wrap {
+    width:100%;
+    margin:16px 0px;
+}
+
+#save-tds {
+    width:100%;
+    padding:8px 0px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(78, 112, 234);
+    color:white;
+    font-weight: bold;
+}
+
+/* style for account tds*/
+.thead {
+    font-size:16px;
+}

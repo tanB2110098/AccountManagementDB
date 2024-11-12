@@ -8,6 +8,8 @@
     list-style: none;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    padding:10px 0px;
 }
 
 .nav-item {
@@ -27,4 +29,10 @@
     text-decoration: none;
     color:rgb(41, 115, 195);
 
+}
+
+@media screen and (max-width:780px) {
+    #code-generator {
+        display:none;
+    }
 }
