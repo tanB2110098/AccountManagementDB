@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-for-nav.css">
+    <link rel="stylesheet" href="style-for-reset-account.css">
+    <title>Reset Account</title>
+</head>
+<style>
+    #nav-list {
+        padding:0;
+    }
+</style>
+<body>
+    <nav id="nav">
+        <ul id="nav-list">
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./index.html">Account Mg</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./code-generate.html" id="code-generator">Code Generate</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-item_link" href="./history.html">History</a>
+            </li>
+            
+            <li class="nav-item">
+                <a  class="nav-item_link" href="https://tankim19722003.github.io/testxu/">TDS Accounts</a>
+            </li>
+
+            <li class="nav-item active">
+                <a  class="nav-item_link" href="./reset-account.html">Reset Account</a>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1 style="text-align: center;">Reset Account</h1>
+        <div style="text-align: right;" id="account-reset-header">
+            <select id="device-selected">
+                <option value="Thiết bị" disabled selected>Thiết bị</option>
+            </select>
+            <button id="reset">Reset</button>
+        </div>
+    </header>
+    
+    <div id="body">
+
+        <table>
+            <thead>
+                <td>STT</td>
+                <td>Account</td>
+            </thead>
+
+            <tbody id="account-body">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>tankim123</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="script-for-reset-account.js" type="module">
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    width:800px;
+    margin:0 auto;
+}
+#device-selected {
+    width: 200px;
+    padding: 4px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#reset {
+    background-color: blue;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 4px;
+    width: 100px;
+    max-width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+ }
+
+ #body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:16px;
+ }
+
+thead td {
+    width:200px;
+    background-color:green;
+    color:white;
+    padding:6px 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+ }
+
+ tr td {
+    font-size: 1.1rem;
+    text-align: center;
+ }
+
+tr{
+    height:40px;
+ }
